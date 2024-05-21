@@ -2,7 +2,7 @@ import requests
 
 class MusixmatchAPI:
   
-  def __init__(self, api_key):
+  def __init__(self):
     self.api_key = "dfb4eead38c96405d196e1cde02976db"
     self.base_url = "https://api.musixmatch.com/ws/1.1/"
 

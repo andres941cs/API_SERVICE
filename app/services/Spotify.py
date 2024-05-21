@@ -1,10 +1,6 @@
 import requests
 import base64
 
-# client_id = "c585723063d1410fbd32b278bfdfed80"
-# client_secret = "b833e6d969934e79abd10726a44b2f8f"
-# API_URL = "https://api.spotify.com/v1/"
-
 class SpotifyAPI:
     def __init__(self):
         self.url = "https://api.spotify.com/v1/"
@@ -19,7 +15,6 @@ class SpotifyAPI:
             "grant_type": "client_credentials"
         }
         auth = client_id + ":" + client_secret
-        # auth_base64 = str(base64.b64encode(auth.encode('utf-8')), 'utf-8')
         auth_base64 = base64.b64encode(auth.encode()).decode()
         headers = {
             'Authorization': 'Basic ' + auth_base64,
@@ -54,6 +49,7 @@ class SpotifyAPI:
                     "name": album["name"],
                     "release_date": album["release_date"],
                     "artists": [artist["name"] for artist in album["artists"]],
+                    "image": album["images"][0]["url"] if len(album["images"]) > 0 else ""
                 })
             return array_albums
         else:
@@ -104,8 +100,6 @@ class SpotifyAPI:
                     "name": data["name"],
                     "image": data["images"],
                     "country": "N/A"
-                    # "genres": data["genres"],
-                    # "followers": data["followers"]["total"],
                 }
             return artist
         else:
@@ -130,10 +124,8 @@ class SpotifyAPI:
                 data.append({
                     "id": artist["id"],
                     "name": artist["name"],
-                    "image": artist["images"][0]["url"],
+                    "image":artist["images"][0]["url"] if len(artist["images"]) > 0 else "",
                     "country": "N/A"
-                    # "genres": artist["genres"],
-                    # "followers": artist["followers"]["total"],
                 })
             return data
 
@@ -192,9 +184,10 @@ class SpotifyAPI:
 
 
 # SPOTIFY
-# spotify = SpotifyAPI()
+spotify = SpotifyAPI()
 # __________________PRUEBAS_____________________
-# result = spotify.search_artist("suisei hoshimachi")
+result = spotify.search_artist("miley")
+
 # result = spotify.get_artist("726WiFmWkohzodUxK3XjHX")
 
 # result = spotify.search_song("Flowers")
@@ -203,5 +196,5 @@ class SpotifyAPI:
 
 # result = spotify.search_album("Specter")
 # result = spotify.get_album("5eQx95EHzDMcPurV2aByeh")
-# print(result)
+print(result)
 
