@@ -70,26 +70,3 @@ class MusixmatchAPI:
         return {"lyrics": "Lyrics not available"}
     else:
       raise Exception("Error al obtener la letra de la canción: {}".format(response.status_code))
-
-# Ejemplo de uso
-api_key = "dfb4eead38c96405d196e1cde02976db"  # Reemplázalo con tu API key
-
-musixmatch = MusixmatchAPI(api_key)
-
-# Buscar canción por título
-# titulo_cancion = "Yo te esperare"
-# cancion = musixmatch.buscar_cancion_por_titulo(titulo_cancion)
-# print(cancion)
-
-# Buscar artista por nombre
-# artista = "Daddy Yankee"
-# artistas = musixmatch.searchArtist(artista)
-# print(artistas)
-
-# Obtener letra de una canción
-# nombre_cancion = "Flowers"
-# nombre_artista = "Miley Cyrus"
-nombre_cancion = "Ghost"
-nombre_artista = "Suisei Hoshimachi"
-letra = musixmatch.getLyricSong(nombre_cancion, nombre_artista)
-# print(letra)

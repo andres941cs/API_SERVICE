@@ -192,7 +192,7 @@ class SpotifyAPI:
 
 
 # SPOTIFY
-spotify = SpotifyAPI()
+# spotify = SpotifyAPI()
 # __________________PRUEBAS_____________________
 # result = spotify.search_artist("suisei hoshimachi")
 # result = spotify.get_artist("726WiFmWkohzodUxK3XjHX")
@@ -205,66 +205,3 @@ spotify = SpotifyAPI()
 # result = spotify.get_album("5eQx95EHzDMcPurV2aByeh")
 # print(result)
 
-# _________________________MEJORAS_________________________
-    # def search(name):
-    #     url = API_URL+"search"
-    #     params = {
-    #         "q": name,
-    #         "type": "track artist album",
-    #     }
-    #     token = 'BQDoFG-Zjk_eB-nU6c9e5emIBTNtnPDU6kL7CSmX1axg8SblOnW3Mcinx6_nuvRYE1eYjga4ZfhiAJW10oFjbonlyBt50U-iRLiOaZ_UDbWav6IMa4I'
-    #     headers = {
-    #         'Authorization': 'Bearer ' + token
-    #     }
-    #     response = requests.get(url, params=params, headers=headers)
-    #     if response.status_code == 200:
-    #         data = response.json()
-    #         return (data)
-
-   
-# def get_artist_albums(artist_id):
-#     url = API_URL+"artists/"+artist_id+"/albums"
-#     headers = {
-#         'Authorization': 'Bearer ' + token
-#     }
-#     response = requests.get(url, headers=headers)
-
-#     if response.status_code == 200:
-#         data = response.json()
-#         albums = data["items"]
-#         data = []
-#         for album in albums:
-#             if len(album["images"]) == 0:
-#                 album["images"] = [{"url": "https://placehold.co/640x640"}]
-#             else:
-#                 album["images"] = album["images"][0]["url"]
-#             data.append({
-#                 "id": album["id"],
-#                 "name": album["name"],
-#                 "release_date": album["release_date"],
-#                 "image": album["images"]
-#             })
-#         return data
-#     else:
-#         return None
-    
-# def get_album_tracks(album_id):
-#     url = API_URL+"albums/"+album_id+"/tracks"
-#     headers = {
-#         'Authorization': 'Bearer ' + token
-#     }
-#     response = requests.get(url, headers=headers)
-    
-#     if response.status_code == 200:
-#         data = response.json()
-#         tracks = data["items"]
-#         data = []
-#         for track in tracks:
-#             data.append({
-#                 "id": track["id"],
-#                 "name": track["name"],
-#                 "duration": track["duration_ms"]
-#             })
-#         return data
-#     else:
-#         return None
