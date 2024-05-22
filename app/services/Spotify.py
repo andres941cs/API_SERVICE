@@ -48,8 +48,9 @@ class SpotifyAPI:
                     "id": album["id"],
                     "name": album["name"],
                     "release_date": album["release_date"],
-                    "artists": [artist["name"] for artist in album["artists"]],
-                    "image": album["images"][0]["url"] if len(album["images"]) > 0 else ""
+                    "artists": " ".join([artist["name"] for artist in album["artists"]]),
+                    "image": album["images"][0]["url"] if len(album["images"]) > 0 else "",
+                    "genres": album["genres"] if "genres" in album else "N/A"
                 })
             return array_albums
         else:
@@ -149,7 +150,7 @@ class SpotifyAPI:
                 "name": data["name"],
                 "artists": [artist["name"] for artist in data["artists"]],
                 "album": data["album"]["name"],
-                "duration": data["duration_ms"],
+                "duration": int(data["duration_ms"]/1000),
                 "preview_url": data["preview_url"],
                 "image": data["album"]["images"][0]["url"]
             }
@@ -171,11 +172,16 @@ class SpotifyAPI:
             array_songs = data["tracks"]["items"]
             songs = []
             for song in array_songs:
+                print(song)
                 songs.append({
                     "id": song["id"],
                     "name": song["name"],
-                    "duration": song["duration_ms"],
+                    "duration": int(song["duration_ms"]/1000),
                     "preview_url": song["preview_url"],
+                    "artists": " ".join([artist["name"] for artist in song["artists"]]),
+                    "album": song["album"]["name"],
+                    "image":song["album"]["images"][0]["url"],
+                    "genres": song["artists"][0]["genres"][0] if "genres" in song["artists"][0] else "N/A"
                 })
             return songs
         else:
@@ -186,7 +192,7 @@ class SpotifyAPI:
 # SPOTIFY
 spotify = SpotifyAPI()
 # __________________PRUEBAS_____________________
-result = spotify.search_artist("miley")
+# result = spotify.search_artist("miley")
 
 # result = spotify.get_artist("726WiFmWkohzodUxK3XjHX")
 
@@ -196,5 +202,5 @@ result = spotify.search_artist("miley")
 
 # result = spotify.search_album("Specter")
 # result = spotify.get_album("5eQx95EHzDMcPurV2aByeh")
-print(result)
+# print(result)
 
