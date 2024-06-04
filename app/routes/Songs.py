@@ -24,14 +24,12 @@ def getSong(id):
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
-    # audio es el name de input del formalario
     if 'audio' not in request.files:
         return 'No se ha proporcionado ningún archivo'
 
     archivo = request.files['audio']
 
-    # Puedes guardar el archivo en el servidor, procesarlo, etc.
-    # Aquí solo se imprime el nombre del archivo
+    # PROCCES FILE
     if archivo.filename != '':
         filename = archivo.filename
         # la funcion .save(ruta donde se guarda y el nombre del archivo)

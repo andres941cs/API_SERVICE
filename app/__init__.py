@@ -1,7 +1,5 @@
 #  IMPORTS  #
-# Flask libraries
 from flask import Flask
-# from flask_restful import Api
 from flask_cors import CORS
 
 #  DECLARATIONS  #
@@ -15,12 +13,13 @@ def create_app():
     # app.config['SESSION_COOKIE_SECURE']=True
     # app.config['SESSION_COOKIE_SAMESITE']='None'
 
-     # Routes
-
-    from .routes import Songs , Artists, Albums
-     # BLUEPRINTS
+    # ROUTES
+    from .routes import Songs , Artists, Albums , Lyrics
+    
+    # BLUEPRINTS
     app.register_blueprint(Songs.app)
     app.register_blueprint(Artists.app)
     app.register_blueprint(Albums.app)
+    app.register_blueprint(Lyrics.app)
 
     return app

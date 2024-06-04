@@ -8,7 +8,7 @@ class SpotifyAPI:
         self.client_secret = "b833e6d969934e79abd10726a44b2f8f"
         self.token = self.get_token(self.client_id, self.client_secret)
 
-    # Get token
+    # GET TOKEN
     def get_token(self, client_id, client_secret):
         url = "https://accounts.spotify.com/api/token"
         params = {
@@ -29,7 +29,7 @@ class SpotifyAPI:
             return response.status_code
     
     # _________________________ALBUMS_________________________
-    # Search Album by name
+    # SEARCH ALBUM BY NAME
     def search_album(self, name):
         url = self.url+"search"
         params = {
@@ -55,7 +55,8 @@ class SpotifyAPI:
             return array_albums
         else:
             return response.status_code
-        
+
+    # GET ALBUM BY ID 
     def get_album(self, album_id):
         url = self.url +"albums/" + album_id
         headers = {
@@ -83,7 +84,7 @@ class SpotifyAPI:
             return None
     
     #_________________________ARTISTS_________________________
-    # Get Artist
+    # GET ARTIST BY ID
     def get_artist(self, id_artist):
         url = self.url+"artists/"+id_artist
         headers = {'Authorization': 'Bearer ' + self.token}
@@ -106,7 +107,7 @@ class SpotifyAPI:
         else:
             return None
 
-    
+    # SEARCH ARTIST BY NAME
     def search_artist(self, artist_name):
         url = self.url+"search"
         params = {
@@ -134,7 +135,7 @@ class SpotifyAPI:
             return response.json()
 
     # _________________________SONGS_________________________
-    # Get Song
+    # GET SONG BY ID
     def get_song(self, track_id):
         url = self.url+"tracks/"+track_id
         headers = {
@@ -158,7 +159,7 @@ class SpotifyAPI:
         else:
             return None
     
-    # Search Song by name
+    # SEARCH SONG BY NAME
     def search_song(self, name):
         url = self.url+"search"
         params = {"q": name,"type": "track"}
@@ -189,9 +190,8 @@ class SpotifyAPI:
     
 
 
-# SPOTIFY
-spotify = SpotifyAPI()
 # __________________PRUEBAS_____________________
+# spotify = SpotifyAPI()
 # result = spotify.search_artist("miley")
 
 # result = spotify.get_artist("726WiFmWkohzodUxK3XjHX")

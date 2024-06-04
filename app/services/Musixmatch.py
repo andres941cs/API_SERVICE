@@ -6,7 +6,8 @@ class MusixmatchAPI:
     self.api_key = "dfb4eead38c96405d196e1cde02976db"
     self.base_url = "https://api.musixmatch.com/ws/1.1/"
 
-  def buscar_cancion_por_titulo(self, titulo):
+  # SEARCH SONG BY NAME
+  def searchSongByName(self, titulo):
     params = {
       "q_track": titulo,
       "f_lyrics_id": 1,
@@ -26,6 +27,7 @@ class MusixmatchAPI:
     else:
       raise Exception("Error al buscar la canción: {}".format(response.status_code))
 
+  # SEARCH ARTIST BY NAME
   def searchArtist(self, artist):
     params = {
       "q_artist": artist,
@@ -50,6 +52,7 @@ class MusixmatchAPI:
     else:
       raise Exception("Error al buscar la canción: {}".format(response.status_code))
 
+  # GET LYRIC BY NAME SONG AND NAME ARTIST
   def getLyricSong(self, nameSong, nameArtist):
     params = {
       "apikey": self.api_key,

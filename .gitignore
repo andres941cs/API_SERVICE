@@ -1,0 +1,26 @@
+# Archivos y directorios generados por el entorno de desarrollo
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Archivos de configuración
+*.ini
+*.cfg
+*.env
+
+# Archivos de registro
+*.log
+
+# Directorio de dependencias
+venv/
+
+# Archivos de compilación
+*.pyc
+*.pyo
+*.pyd
+
+# Archivos de respaldo
+*~
+*.bak
+*.swp
